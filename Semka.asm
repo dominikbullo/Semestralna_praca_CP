@@ -28,7 +28,7 @@ BYTE 00001001b
 	out	3,a		;aktivacia celej klavesnice
 	eit
 
-
+	
 ;Hlavny program - nekonecna slucka
 start:	
 	mvi	c,0
@@ -286,43 +286,17 @@ nula:
 	
 	lmi	a,0
 	mvi	b,0
-	cmi	a,4
-	jzr	ulozMin
-	cmi	a,3
-	jzr	ulozDesMin
-	cmi	a,2
-	jzr	ulozHod
-	cmi	a,1
-	jzr	ulozDesHod
-
-	ret
+	jmp zistiMiesto
 
 styri:
 	lmi	a,0
 	mvi	b,4
-	cmi	a,4
-	jzr	ulozMin
-	cmi	a,3
-	jzr	ulozDesMin
-	cmi	a,2
-	jzr	ulozHod
-	cmi	a,1
-	jzr	ulozDesHod
-
-	ret
+	jmp zistiMiesto
 
 osem:
 	lmi	a,0
 	mvi	b,8
-	cmi	a,4
-	jzr	ulozMin
-	cmi	a,3
-	jzr	ulozDesMin
-	cmi	a,2
-	jzr	ulozHod
-	cmi	a,1
-	jzr	ulozDesHod
-	ret
+	jmp zistiMiesto
 
 
 
@@ -357,41 +331,17 @@ jedna:
 
 	lmi	a,0
 	mvi	b,1
-	cmi	a,4
-	jzr	ulozMin
-	cmi	a,3
-	jzr	ulozDesMin
-	cmi	a,2
-	jzr	ulozHod
-	cmi	a,1
-	jzr	ulozDesHod
-	jmp	start
+	jmp zistiMiesto
 
 pat:
 	lmi	a,0
 	mvi	b,5
-	cmi	a,4
-	jzr	ulozMin
-	cmi	a,3
-	jzr	ulozDesMin
-	cmi	a,2
-	jzr	ulozHod
-	cmi	a,1
-	jzr	ulozDesHod
-	ret
+	jmp zistiMiesto
 
 devat:
 	lmi	a,0
 	mvi	b,9
-	cmi	a,4
-	jzr	ulozMin
-	cmi	a,3
-	jzr	ulozDesMin
-	cmi	a,2
-	jzr	ulozHod
-	cmi	a,1
-	jzr	ulozDesHod
-	ret
+	jmp zistiMiesto
 
 int13:
 	mvi	a,1110b
@@ -416,32 +366,16 @@ int13:
 dva:
 	lmi	a,0
 	mvi	b,2
-	cmi	a,4
-	jzr	ulozMin
-	cmi	a,3
-	jzr	ulozDesMin
-	cmi	a,2
-	jzr	ulozHod
-	cmi	a,1
-	jzr	ulozDesHod
-ret
+	jmp zistiMiesto
 
 sest:
 	lmi	a,0
 	mvi	b,6
-	cmi	a,4
-	jzr	ulozMin
-	cmi	a,3
-	jzr	ulozDesMin
-	cmi	a,2
-	jzr	ulozHod
-	cmi	a,1
-	jzr	ulozDesHod
-	jmp	start
+	jmp zistiMiesto
 
 
 int14:
-		mvi	a,1110b
+	mvi	a,1110b
 	out	0,a		;aktivacia riadku 1
 	inn	a,0		;citanie stavu stlpcov
 	ani	a,00001111b	;vynulovanie hornych bitov
@@ -464,20 +398,14 @@ int14:
 tri:
 	lmi	a,0
 	mvi	b,3
-	cmi	a,4
-	jzr	ulozMin
-	cmi	a,3
-	jzr	ulozDesMin
-	cmi	a,2
-	jzr	ulozHod
-	cmi	a,1
-	jzr	ulozDesHod
-	jmp	start
+	jmp zistiMiesto
 	
 sedem:
-
 	lmi	a,0
 	mvi	b,7
+	jmp zistiMiesto
+
+zistiMiesto:
 	cmi	a,4
 	jzr	ulozMin
 	cmi	a,3
@@ -487,5 +415,5 @@ sedem:
 	cmi	a,1
 	jzr	ulozDesHod
 	jmp	start
-
+	ret			;tu by sa nemal dostať, but safety first 
 
