@@ -1,4 +1,4 @@
-
+;kvoli zrovaniu indexov
 BYTE 00000011b
 BYTE 10011111b
 BYTE 00100101b
@@ -28,14 +28,52 @@ BYTE 00001001b
 	out	3,a		;aktivacia celej klavesnice
 	eit
 
+vykresli:	
+	mvi	a,0x0f		;vypnutie displejov
+	out	5,a		;pravy register	
+
+	mvi	a,0x0d		;data (znak '3')
+	out	10b,a		;lavy register
+
+	mvi	a,0x07		;aktivacia displeja 1
+	out	5,a		;pravy register
+
+	mvi	a,0x0f		;vypnutie displejov
+	out	5,a		;pravy register
 	
+	mvi	a,0x0d		;data (znak '3')
+	out	10b,a		;lavy register
+
+	mvi	a,0x0b		;aktivacia displeja 2
+	out	5,a		;pravy register
+
+	mvi	a,0x0f		;vypnutie displejov
+	out	5,a		;pravy register
+	
+	mvi	a,0x0d		;data (znak '3')
+	out	10b,a		;lavy register
+
+	mvi	a,6		;aktivacia displeja 3
+	out	5,a		;pravy register
+
+	mvi	a,0x0f		;vypnutie displejov
+	out	5,a		;pravy register
+	
+	mvi	a,0x0d		;data (znak '3')
+	out	10b,a		;lavy register
+
+	mvi	a,100		;aktivacia displeja 4
+	out	5,a		;pravy register
+	jmp vykresli
+
+
 ;Hlavny program - nekonecna slucka
 start:	
 	mvi	c,0
 	mvi	d,10
 	str	d,c
-opakuj:
 
+opakuj:
 	mvi	a,0x0f		;vypnutie displejov
 	out	5,a		;pravy register	
 
@@ -75,7 +113,7 @@ opakuj:
 	mmr	b,a		;nastavenie druheho displeja zram
 	out	6,b
 
-	mvi	a,0x0e		;aktivacia displeja 2
+	mvi	a,0x0e		;aktivacia displeja 4
 	out	5,a		;pravy register
 	
 	inc	c
@@ -282,8 +320,7 @@ int07:
 
 ;kontrola dalsich tlacidiel v stpci - dorobit
 
-nula:
-	
+nula:	
 	lmi	a,0
 	mvi	b,0
 	jmp zistiMiesto
