@@ -1,4 +1,3 @@
-;kvoli zrovaniu indexov
 BYTE 00000011b
 BYTE 10011111b
 BYTE 00100101b
@@ -20,7 +19,7 @@ BYTE 00001001b
 	smi	4,a
 
 	mvi	a,11
-	mvi	b,1
+	mvi	b,2	;ovládanie rýchlosti hodín, načítané z RAM
 	str	a,b
 	
 	

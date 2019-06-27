@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Board ver="1.1">
-  <View hValue="0.30191149522671484" vValue="0.5863678804855281" />
+  <View hValue="0.4411275625585601" vValue="0.6246617924056884" />
   <SchoolBreadboards>
     <SchoolBreadboard id="sb0">
       <gridX>37</gridX>
@@ -2186,17 +2186,6 @@
       <end>
         <componentId>c1</componentId>
         <socketId>557</socketId>
-      </end>
-      <Joints />
-    </Wire>
-    <Wire color="0xe6804dff">
-      <start>
-        <gridX>1</gridX>
-        <gridY>1</gridY>
-      </start>
-      <end>
-        <componentId>c1</componentId>
-        <socketId>618</socketId>
       </end>
       <Joints />
     </Wire>
